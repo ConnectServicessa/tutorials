@@ -536,7 +536,7 @@ function qaMenu(on){const q=$('#qa');q.classList.toggle('open',on);const m=$('#q
   d.innerHTML=`<div id="qa-export">${ic('xls')}Export Excel</div><div id="qa-add">${ic('uplus')}Add new Employee</div><div>${ic('upload')}Upload Excel File</div><div>${ic('images')}Upload Zip File Images</div><div>${ic('dl')}Download Template Excel File</div>`;q.appendChild(d);}}
 function rowMenu(no){closeRowMenu();const b=$(`#r-${no} .rbtn`);b.classList.add('op');const r=rel(b),e=ST.emps.find(x=>x.no===no),m=document.createElement('div');m.className='menu rmenu';m.id='rmenu';
   m.style.left=(r.x+r.w-220)+'px';m.style.top=(r.y+r.h+4)+'px';
-  m.innerHTML=`<div id="rm-details">${ic('eye')}Show Details</div><div id="rm-toggle">${e.act?ic('ban')+'Cancel':ic('check')+'Activate'}</div><div>${ic('key')}Change Password</div><div class="danger">${ic('trash')}Delete Record</div>`;$('#ov').appendChild(m);}
+  m.innerHTML=`<div id="rm-details">${ic('eye')}Show Details</div><div id="rm-toggle">${e.act?ic('ban')+'Deactivate':ic('check')+'Activate'}</div><div>${ic('key')}Change Password</div><div class="danger">${ic('trash')}Delete Record</div>`;$('#ov').appendChild(m);}
 function closeRowMenu(){const m=$('#rmenu');m&&m.remove();$$('.rbtn.op').forEach(b=>b.classList.remove('op'));}
 function toggleAct(no){const e=ST.emps.find(x=>x.no===no);e.act=!e.act;ST.base.a+=e.act?1:-1;ST.base.i+=e.act?-1:1;ST.flash=no;renderList();}
 function hl(sel,on=true){const e=$(sel);e&&e.classList.toggle('hl',on);}
@@ -764,7 +764,7 @@ function S_toggle(){
   const C=(t,h)=>cap(t,5,'Activate / deactivate',h);
   C(0,'Go <b>Back</b> to the list');
   let t=mc(300,'#btn-back',()=>{page('pg-list');renderList();},500);
-  C(t+200,'To deactivate, click <b>⋮</b> on the row, then <b>Cancel</b>');
+  C(t+200,'To deactivate, click <b>⋮</b> on the row, then <b>Deactivate</b>');
   t=mc(t+500,'#r-E-10233 .rbtn',()=>rowMenu('E-10233'),550);
   at(t+300,()=>hl('#rm-toggle'));
   t=mc(t+700,'#rm-toggle',()=>{closeRowMenu();toggleAct('E-10233');},380);
